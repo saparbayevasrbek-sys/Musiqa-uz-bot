@@ -53,21 +53,14 @@ def main():
                     chat_id = item["message"]["chat"]["id"]
                     text = item["message"]["text"]
                     if text == "/start":
-                        send_message(chat_id, "Salom! Cloud serverdan ishlayapman. Qo'shiq nomini yozing.")
-                    elif "http" in text:
-                        send_message(chat_id, "Havola qabul qilindi, musiqa qidirilmoqda...")
-                        found = search_real_music("Uzbek Hit")
-                        if found and found["url"]:
-                            send_audio(chat_id, found["url"], found["title"], found["performer"])
-                        else:
-                            send_message(chat_id, "Topilmadi.")
+                        send_message(chat_id, "Salom! Cloud serverdan ishlayapman. Istalgan qo'shiq nomini yozing.")
                     else:
                         send_message(chat_id, f"'{text}' qidirilmoqda...")
-                        found = search_real_music(text)
+                        found = search_real_music(text)  # <--- Mana bu yerda siz yozgan matn qidiriladi!
                         if found and found["url"]:
                             send_audio(chat_id, found["url"], found["title"], found["performer"])
                         else:
-                            send_message(chat_id, "Topilmadi.")
+                            send_message(chat_id, "Bu qo'shiq topilmadi, boshqasini yozib ko'ring.")
         time.sleep(1)
 
 if __name__ == '__main__':
