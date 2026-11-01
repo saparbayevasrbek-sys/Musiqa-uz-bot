@@ -56,7 +56,7 @@ def main():
                         send_message(chat_id, "Salom! Cloud serverdan ishlayapman. Istalgan qo'shiq nomini yozing.")
                     else:
                         send_message(chat_id, f"'{text}' qidirilmoqda...")
-                        found = search_real_music(text)  # <--- Mana bu yerda siz yozgan matn qidiriladi!
+                        found = search_real_music(text)
                         if found and found["url"]:
                             send_audio(chat_id, found["url"], found["title"], found["performer"])
                         else:
